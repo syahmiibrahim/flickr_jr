@@ -1,0 +1,19 @@
+<div id="content" class="container">
+<h2><%= @user.username.capitalize %>'s Albums</h2>
+	<b>Your beautiful photo, beautiful moments </b>
+	<br>
+	<br>
+	<% @all_album.each do |album| %>
+	<a href="/albums/<%= album.id %>"><%= album.title.capitalize %></a>
+	<h5><%= album.description %></h5>
+
+	<% if (album.user_id == session[:id]) %>
+	<form action="/albums" method="post">
+	<input type="hidden" name="_method" value="delete">
+	<input type="hidden" name="id" value= "<%= album.id %>">
+	<button class="btn btn-default" value="submit">Delete</button>
+	</form>
+	<% end %>
+
+	<% end %>
+</div>

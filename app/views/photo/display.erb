@@ -1,0 +1,13 @@
+<div id="content" class="container">
+	<a href="/albums/<%= @photo.album.id %>/<%= @photo.id %>"><img src="/images/<%= @photo.file_name %>" widht="600px" height="600px"></a>
+	<h4><%= @photo.caption %></h4>
+	Album: <a href="/albums/<%= @photo.album_id %>"><%= @photo.album.title %></a>
+	Posted by: <a href="/user/<%= @photo.album.user_id %>"><%= @photo.album.user.username %></a>
+
+	<% if (@album.user_id == session[:id]) %>
+	<form action="/photo/<%= @photo.id %>" method="post">
+		<input type="hidden" name="_method" value="delete">
+		<button class="btn btn-default" value="submit">Delete Photo</button>
+	</form>
+	<% end %>
+</div>

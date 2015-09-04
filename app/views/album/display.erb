@@ -1,0 +1,25 @@
+<div id="content" class="container">
+	<h2><%= @album.title.capitalize %></h2>
+
+	<% if (@album.user_id == session[:id]) %>
+	<form action="/albums" method="post">
+		<input type="hidden" name="_method" value="delete">
+		<button class="btn btn-default" value="submit">Delete Album</button>
+	</form>
+	<% end %>
+
+	<% if (@album.user_id == session[:id]) %>
+	<form action="/albums/<%= @album.id %>" method="post">
+		<input type="hidden" name="id" value="<%= @album.id %>">
+		<button class="btn btn-default" value="submit">Upload photo</button>
+	</form>
+	<% end %>
+	Posted by: <a href="/user/<%= @album.user_id %>"><%= @album.user.username %>
+	<br>
+
+	<% @photo.each do |foto| %>
+	<a href="/albums/<%= foto.album.id %>/<%= foto.id %>"><img src="/images/<%= foto.file_name %>" width="400" height="400"></a>
+	<br>
+	<h5><%= foto.caption %></h5>
+	<% end %>
+</div>

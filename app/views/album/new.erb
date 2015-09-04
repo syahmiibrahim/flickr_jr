@@ -1,0 +1,15 @@
+<div id="content" class="container">
+<h2>Create your new album, <%= @user.username.capitalize %></h2>
+
+<form id="new" role="form" action="/albums/new/<%= @user.id %>" method="post">
+	<div class="form-group">
+		<label for="inputTitle">Title</label>
+		<input name="post[title]" type="text" class="form-control" id="inputTitle" placeholder="Title">
+	</div>
+	<div class="form-group">
+		<label for="inputDescription">Description</label>
+		<textarea name="post[description]" class="form-control" id="inputDescription" placeholder="Description" row="5"></textarea>
+	</div>
+	<button value="submit" class="btn btn-default">Create New Album</button>
+	</form>
+</div>
